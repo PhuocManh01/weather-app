@@ -34,7 +34,7 @@ class NavigationCubit extends Cubit<NavigationState> {
       if (_authCubit.state is! AuthSuccess) {
         emit(NavigationUnauthorizedError(
           lastIndex: state.currentIndex,
-          message: "403",
+          message: "Your access request has been denied!",
         ));
         return;
       }

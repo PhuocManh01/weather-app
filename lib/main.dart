@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/features/data_bank_page/bloc/data_bank_bloc.dart';
 import 'package:weather_app/features/home/bloc/weather_bloc.dart';
 import 'package:weather_app/features/home/bloc/weather_event.dart';
 import 'package:weather_app/routes/app_routes.dart';
@@ -20,7 +21,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-
+        BlocProvider(create: (context) => DataBankBloc()),
         BlocProvider(create: (context) => AuthCubit()..checkAuthStatus()),
         BlocProvider(create: (context) => WeatherBloc()..add(FetchWeather("Da Nang")))
       ],

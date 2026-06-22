@@ -3,17 +3,18 @@ import '../services/data_bank_service.dart';
 import 'data_bank_event.dart';
 import 'data_bank_state.dart';
 
-class DataBankBloc extends Cubit<DataBankState> {
+class DataBankBloc extends Bloc<DataBankEvent, DataBankState> {
   final DataBankService _dataBankService = DataBankService();
 
-  DataBankBloc() : super(DataBankInitial());
+  DataBankBloc() : super(DataBankInitial()) {
+    on<SubmitDataRequest>(_onSubmitDataRequest);
+  }
 
-  Future<void> submitRequest({
-    required String userEmail,
-    required String location,
-    required String formattedDate,
-  }) async {
-    if (userEmail.isEmpty || location.isEmpty) {
+  Future<void> _onSubmitDataRequest(
+    SubmitDataRequest event,
+    Emitter<DataBankState> emit,
+  ) async {
+    if (event.userEmail.isEmpty || event.location.isEmpty) {
       emit(DataBankFailure("Please fill in all fields!"));
       return;
     }
@@ -22,9 +23,9 @@ class DataBankBloc extends Cubit<DataBankState> {
 
     try {
       final isLaunched = await _dataBankService.sendDataRequest(
-        userEmail: userEmail,
-        location: location,
-        formattedDate: formattedDate,
+        userEmail: event.userEmail,
+        location: event.location,
+        formattedDate: event.formattedDate,
       );
 
       if (isLaunched) {
