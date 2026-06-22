@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/features/about_us/about_us.dart';
+import 'package:weather_app/features/contact_us/contact_us.dart';
+import 'package:weather_app/features/faq/faq.dart';
+import 'package:weather_app/features/profile/profile.dart';
+import 'package:weather_app/features/saved_location/saved_location.dart';
 import 'app_routes.dart';
 
 import '../features/bottom_navigation/views/bottom_navigation_screen.dart';
@@ -17,9 +22,19 @@ class AppPages {
       case AppRoutes.login:
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case AppRoutes.aqiScale:
-        return MaterialPageRoute(builder: (_) => const AQIScale());
+        return MaterialPageRoute(builder: (_) => const AQIScalePage());
       case AppRoutes.locationDetail:
         return MaterialPageRoute(builder: (_) => const LocationDetail());
+      case AppRoutes.contactUs:
+        return MaterialPageRoute(builder: (_) => const ContactUsPage());
+      case AppRoutes.faq:
+        return MaterialPageRoute(builder: (_) => const FaqPage());
+      case AppRoutes.profile:
+        return MaterialPageRoute(builder: (_) => const ProfilePage());
+      case AppRoutes.aboutUs:
+        return MaterialPageRoute(builder: (_) => const AboutUsPage());
+      case AppRoutes.savedLocationPage:
+        return MaterialPageRoute(builder: (_) => const SavedLocationsPage());
       default:
         return MaterialPageRoute(builder: (_) => const Scaffold(body: Center(child: Text("The page does not exist!"))));
     }

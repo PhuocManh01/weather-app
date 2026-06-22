@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/features/auth/cubit/auth_cubit.dart';
 import 'package:weather_app/features/bottom_navigation/bottom_navigation.dart';
 import 'package:weather_app/features/bottom_navigation/cubit/navigation_cubit.dart';
-import 'package:weather_app/features/data_bank_page/data_bank_page.dart';
+import 'package:weather_app/features/data_bank_page/views/data_bank_page.dart';
 import 'package:weather_app/features/home/views/home.dart';
-import 'package:weather_app/features/more_page/more_page.dart';
+import 'package:weather_app/features/more_page/views/more_page.dart';
 
 
 class BottomNavigationScreen extends StatelessWidget {

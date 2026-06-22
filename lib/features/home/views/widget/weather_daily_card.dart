@@ -41,6 +41,7 @@ class WeatherDailyCard extends StatelessWidget {
     return Container(
       width: 70,
       padding: EdgeInsets.only(bottom: 5, top: 5),
+      margin: EdgeInsets.only(left: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: const Color.fromARGB(255, 232, 239, 232),
@@ -67,7 +68,7 @@ class WeatherDailyCard extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: "SF Pro Display",
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 12,
                 ),
               ),
               Text(
@@ -75,7 +76,7 @@ class WeatherDailyCard extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: "ABeeZee",
                   fontWeight: FontWeight.bold,
-                  fontSize: 11,
+                  fontSize: 8,
                 ),
               ),
             ],
@@ -93,11 +94,11 @@ class WeatherDailyCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "${forecast.maxTemp ?? '--'}",
+                "${forecast.maxTemp ?? '__'}",
                 style: TextStyle(
                   fontFamily: "SF Pro Display",
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 12,
                 ),
               ),
               Text(
@@ -105,7 +106,7 @@ class WeatherDailyCard extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: "ABeeZee",
                   fontWeight: FontWeight.bold,
-                  fontSize: 11,
+                  fontSize: 8,
                 ),
               ),
             ],

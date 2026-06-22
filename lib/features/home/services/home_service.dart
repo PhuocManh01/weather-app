@@ -33,7 +33,7 @@ class HomeService {
             maxTemp: (dayData['day']['maxtemp_c'] as num).toDouble(),
             minTemp: (dayData['day']['mintemp_c'] as num).toDouble(),
             condition: dayData['day']['condition']['text'].toString(),
-            aqi: currentCityAqi, // API AQICN free thường trả về real-time, ta gán tạm cho các ngày để hiển thị
+            aqi: currentCityAqi,
           );
         }).toList();
       } else {

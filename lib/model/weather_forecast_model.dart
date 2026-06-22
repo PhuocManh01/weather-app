@@ -1,4 +1,3 @@
-// features/home/data/models/weather_forecast_model.dart
 class WeatherForecastModel {
   final DateTime forecastDate;
   final double maxTemp;
