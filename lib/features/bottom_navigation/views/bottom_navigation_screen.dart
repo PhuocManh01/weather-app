@@ -11,8 +11,6 @@ import 'package:weather_app/features/more_page/more_page.dart';
 class BottomNavigationScreen extends StatelessWidget {
   const BottomNavigationScreen({super.key});
 
-  final List<Widget> _pages = const [HomePage(), DataBankPage(), MorePage()];
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -35,7 +33,11 @@ class BottomNavigationScreen extends StatelessWidget {
           return Scaffold(
             body: IndexedStack(
               index: state.currentIndex,
-              children: _pages,
+              children: const [
+                HomePage(), 
+                DataBankPage(), 
+                MorePage(),
+              ],
             ),
             bottomNavigationBar: BottomNavigation(
               index: state.currentIndex,

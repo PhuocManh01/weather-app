@@ -11,10 +11,10 @@ class AuthCubit extends Cubit<AuthState> {
   void checkAuthStatus() async {
     final bool isLogined = await _authService.isLogined();
     if (isLogined) {
-      emit(AuthSuccess());
+      final savedName = AuthLocalStorage.getUsername();
+      emit(AuthSuccess(savedName.isNotEmpty ? savedName : "User"));
     }
     else {
-      emit(AuthFailure("Session expired. Please login again."));
       _authService.logout();
     }
   }
@@ -30,7 +30,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final isSuccess = await _authService.login(username, password, rememberMe);
       if (isSuccess) {
-        emit(AuthSuccess());
+        emit(AuthSuccess(username));
       }
       else {
         emit(AuthFailure("Invalid Username or Password. Please try again."));

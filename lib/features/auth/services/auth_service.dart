@@ -22,7 +22,7 @@ class AuthService {
 
     debugPrint('Response Status Code: ${response.statusCode}');
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 201 || response.statusCode == 200) {
       final data = jsonDecode(response.body);
       final String accessToken = data['access_token'];
       final String refreshToken = data['refresh_token'];
@@ -33,6 +33,8 @@ class AuthService {
         username: username, 
         password: password
       );
+      debugPrint("AccessToken: saved");
+      debugPrint("RefreshToken: saved");
       return true;
     }
     return false;

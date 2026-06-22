@@ -45,48 +45,46 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthCubit(),
-      child: Scaffold(
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
-          
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 10,
-            children: [
-              Center(
-                child: SizedBox(
-                  height: 300,
-                  width: 300,
-                  child: SvgPicture.asset("assets/images/login_page/login_image.svg"),
-                ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 10,
+          children: [
+            Center(
+              child: SizedBox(
+                height: 300,
+                width: 300,
+                child: SvgPicture.asset("assets/images/login_page/login_image.svg"),
               ),
-              
-              SizedBox(height: 20),
-      
-              Text(
-                "Login",
-                style: TextStyle(
-                  color: Colors.green,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "SF Pro Display"
-                ),
-                textAlign: TextAlign.left,
+            ),
+            
+            SizedBox(height: 20),
+    
+            Text(
+              "Login",
+              style: TextStyle(
+                color: Colors.green,
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+                fontFamily: "SF Pro Display"
               ),
-      
-              Text("Please login to get your local AQI data",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
-                  fontFamily: "ABeeZee",
-                  fontStyle: FontStyle.italic
-                ),
+              textAlign: TextAlign.left,
+            ),
+    
+            Text("Please login to get your local AQI data",
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.grey,
+                fontFamily: "ABeeZee",
+                fontStyle: FontStyle.italic
               ),
-      
-              SizedBox(height: 10),
-              BlocConsumer<AuthCubit, AuthState> (
+            ),
+    
+            SizedBox(height: 10),
+            BlocConsumer<AuthCubit, AuthState> (
                 listener: (context, state) {
                   if (state is AuthSuccess) {
                     Navigator.pushNamedAndRemoveUntil(
@@ -201,7 +199,6 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

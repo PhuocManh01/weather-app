@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/routes/app_routes.dart';
 import 'onboarding_form.dart';
 import 'onboarding_data.dart';
 import '../auth/views/login_page.dart';
@@ -19,9 +20,10 @@ class _OnboardingBuildingState extends State<OnboardingBuilding> {
     await AppSettingStorage.setHasSeenOnboarding();
 
     if (mounted) {
-      Navigator.pushReplacement(
+      Navigator.pushNamedAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (_) => const LoginPage()),
+        AppRoutes.bottomNavigationScreen,
+        (route) => false,
       );
     }
   }

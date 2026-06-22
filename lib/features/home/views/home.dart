@@ -12,8 +12,6 @@ import 'widget/saved_location_card.dart';
 import 'widget/suggested_location_card.dart';
 import '../../more_page/widget/menu_button.dart';
 
-import '../../../core/storage/auth_local_storage.dart';
-
 class HomePage extends StatelessWidget {
 
   const HomePage({super.key});
@@ -40,9 +38,8 @@ class HomePage extends StatelessWidget {
                   
                   if (authState is AuthSuccess) {
                     titleText = "Welcome back,";
-                    final username = context.read<AuthCubit>().getSavedCredentials()?['username'] ?? "User";
                     trailingWidget = Text(
-                      username,
+                      authState.username,
                       style: const TextStyle(
                         color: Colors.green,
                         fontSize: 24,
