@@ -2,12 +2,14 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:weather_app/model/models.dart';
 
 
+
 class HomeService {
-  final String _weatherApiKey = "51af9431c18d46e398403557262206";
-  final String _aqiToken = "9058da33e89a9e0cea8f847de4fe39bdc70696bb";
+  final String _weatherApiKey = dotenv.env['WEATHER_API_KEY'] ?? '';
+  final String _aqiToken = dotenv.env['AQI_TOKEN'] ?? '';
 
   Future<List<WeatherForecastModel>> fetchHomeData(String city) async {
     final weatherUrl = Uri.parse("https://api.weatherapi.com/v1/forecast.json?key=$_weatherApiKey&q=$city&days=7&aqi=no");

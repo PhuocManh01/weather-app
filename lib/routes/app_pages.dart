@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:weather_app/features/home/services/home_service.dart';
+import 'package:weather_app/features/location_detail/bloc/location_detail_bloc.dart';
+import 'package:weather_app/features/location_detail/bloc/location_detail_event.dart';
+import 'package:weather_app/features/location_detail/services/weather_service.dart';
+
 import 'package:weather_app/features/about_us/about_us.dart';
 import 'package:weather_app/features/contact_us/contact_us.dart';
 import 'package:weather_app/features/faq/faq.dart';
@@ -10,7 +17,7 @@ import '../features/bottom_navigation/views/bottom_navigation_screen.dart';
 import '../features/onboarding/onboarding_building.dart';
 import '../features/auth/views/login_page.dart';
 import '../features/aqi_scale/aqi_scale.dart';
-import '../features/location_detail/location_detail.dart';
+import '../features/location_detail/views/location_detail.dart';
 
 class AppPages {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -23,8 +30,22 @@ class AppPages {
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case AppRoutes.aqiScale:
         return MaterialPageRoute(builder: (_) => const AQIScalePage());
+        
       case AppRoutes.locationDetail:
-        return MaterialPageRoute(builder: (_) => const LocationDetail());
+        final String cityName = settings.arguments is String 
+            ? settings.arguments as String 
+            : "Da Nang";
+
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => WeatherDetailBloc(
+              homeService: HomeService(),
+              weatherService: WeatherService(),
+            )..add(FetchWeatherDetail(cityName)),
+            child: const LocationDetail(),
+          ),
+        );
+        
       case AppRoutes.contactUs:
         return MaterialPageRoute(builder: (_) => const ContactUsPage());
       case AppRoutes.faq:
@@ -36,7 +57,11 @@ class AppPages {
       case AppRoutes.savedLocationPage:
         return MaterialPageRoute(builder: (_) => const SavedLocationsPage());
       default:
-        return MaterialPageRoute(builder: (_) => const Scaffold(body: Center(child: Text("The page does not exist!"))));
+        return MaterialPageRoute(
+          builder: (_) => const Scaffold(
+            body: Center(child: Text("The page does not exist!")),
+          ),
+        );
     }
   }
 }

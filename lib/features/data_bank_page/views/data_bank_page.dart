@@ -66,7 +66,7 @@ class _DataBankPageState extends State<DataBankPage> {
     return BlocListener<DataBankBloc, DataBankState>(
       listener: (context, state) {
         if (state is DataBankSuccess) {
-          _showSnackBar("Yêu cầu đã được chuyển tới ứng dụng Email!", Colors.green, Icons.check_circle);
+          _showSnackBar("Request forwarded to your email app!", Colors.green, Icons.check_circle);
         } else if (state is DataBankFailure) {
           _showSnackBar(state.error, Colors.red, Icons.error);
         }

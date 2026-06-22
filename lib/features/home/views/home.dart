@@ -201,7 +201,11 @@ class HomePage extends StatelessWidget {
                       MenuButton(
                         iconButton: Icons.info,
                         nameButton: "Detail Air Quality",
-                        onTap: () => Navigator.pushNamed(context, AppRoutes.locationDetail),
+                        onTap: () => Navigator.pushNamed(
+                          context, 
+                          AppRoutes.locationDetail, 
+                          arguments: "Da Nang", 
+                        ),
                       ),
 
                       MenuButton(
